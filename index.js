@@ -1,25 +1,26 @@
 const app = require('./app')
 const cors = require('cors');
+app.use(function (request, response, next) {
+  response.header("Access-Control-Allow-Origin", "https://notes-frontend-zeta.vercel.app");
+  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 // const corsOptions ={
 //     origin:'http://localhost:3000', 
 //     credentials:true,            //access-control-allow-credentials:true
 //     optionSuccessStatus:200
 // }
 // app.use(cors(corsOptions));
-app.use(
-  cors({
-    "credentials":true,
-    "origin":"*",
-    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-    "optionsSuccessStatus": 204
-  })
-);
-// app.options('*', cors());
-// app.use(function (request, response, next) {
-//   response.header("Access-Control-Allow-Origin", "*");
-//   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
+// app.use(
+//   cors({
+//     "credentials":true,
+//     "origin":"*",
+//     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+//     "optionsSuccessStatus": 204
+//   })
+// );
+app.options('*', cors());
+
 app.get("/", (req, res) => {
     res.json("Hello");
 })
