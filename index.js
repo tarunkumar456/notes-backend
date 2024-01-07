@@ -11,8 +11,7 @@ app.get("/", (req, res) => {
 })
 app.use(cors(
     {
-        origin: ["https://notes-frontend-zeta.vercel.app"],
-        methods: ["POST", "GET", "DELETE", "PUT"],
+        origin:"https://notes-frontend-zeta.vercel.app",
         credentials: true
     }))
 //------for port from env file--------
