@@ -9,11 +9,14 @@ const cors = require('cors');
 app.get("/", (req, res) => {
     res.json("Hello");
 })
-app.use(cors(
-    {
-        origin:"https://notes-frontend-zeta.vercel.app",
-        credentials: true
-    }))
+app.use(
+  cors({
+    "credentials":true,
+    "origin":"https://notes-frontend-zeta.vercel.app",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "optionsSuccessStatus": 204
+  })
+);
 //------for port from env file--------
 const dotenv = require('dotenv');
 const connectdatabase = require("./config/database")
