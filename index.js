@@ -9,12 +9,12 @@ const cors = require('cors');
 app.get("/", (req, res) => {
     res.json("Hello");
 })
-// app.use(cors(
-//     {
-//         origin: ["https://deploy-mern-frontend.vercel.app"],
-//         methods: ["POST", "GET", "DELETE", "PUT"],
-//         credentials: true
-//     }))
+app.use(cors(
+    {
+        origin: ["https://notes-frontend-zeta.vercel.app"],
+        methods: ["POST", "GET", "DELETE", "PUT"],
+        credentials: true
+    }))
 //------for port from env file--------
 const dotenv = require('dotenv');
 const connectdatabase = require("./config/database")
