@@ -6,20 +6,20 @@ const cors = require('cors');
 //     optionSuccessStatus:200
 // }
 // app.use(cors(corsOptions));
-// app.use(
-//   cors({
-//     "credentials":true,
-//     "origin":"https://notes-frontend-zeta.vercel.app",
-//     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-//     "optionsSuccessStatus": 204
-//   })
-// );
+app.use(
+  cors({
+    "credentials":true,
+    "origin":"*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "optionsSuccessStatus": 204
+  })
+);
 // app.options('*', cors());
-app.use(function (request, response, next) {
-  response.header("Access-Control-Allow-Origin", "*");
-  response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+// app.use(function (request, response, next) {
+//   response.header("Access-Control-Allow-Origin", "*");
+//   response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 app.get("/", (req, res) => {
     res.json("Hello");
 })
