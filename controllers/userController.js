@@ -131,9 +131,9 @@ exports.getNote = catchasyncerror(async (req, resp, next) => {
 //authenticated
 exports.isAuth = catchasyncerror(async (req, resp, next) => {
     const { token } = req.cookies;
-    
     if (!token) {
-        return next(new ErrorHandler("please login to access it", 401));
+        
+        return next(new ErrorHandler(JSON.stringify(req.cookies), 401));
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
