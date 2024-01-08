@@ -133,7 +133,7 @@ exports.isAuth = catchasyncerror(async (req, resp, next) => {
     const { token } = req.cookies;
     console.log(token);
     if (!token) {
-        return next(new ErrorHandler(`${req.cookies}`, 401));
+        return next(new ErrorHandler("please login to access it", 401));
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
