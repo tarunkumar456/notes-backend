@@ -6,8 +6,7 @@ const sendtoken = (user, statuscode, resp) => {
         expires: new Date(
             Date.now() + 2 * 24 * 60 * 60 * 1000
         ),
-        httpOnly: true,
-        secure:true
+        httpOnly: true
     };
 
     resp.status(statuscode).cookie('token',token,option).json({
