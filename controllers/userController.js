@@ -132,7 +132,7 @@ exports.getNote = catchasyncerror(async (req, resp, next) => {
 exports.isAuth = catchasyncerror(async (req, resp, next) => {
     const { token } = req.cookies;
     if (!token) {
-        return next(new ErrorHandler("please login to access it", 401));
+        return next();
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
