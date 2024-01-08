@@ -5,7 +5,7 @@ const app = express();
 app.use(
   cors({
     "credentials":true,
-    "origin":"*",
+    "origin":"https://notes-frontend-zeta.vercel.app",
     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
     "optionsSuccessStatus": 204
   })
