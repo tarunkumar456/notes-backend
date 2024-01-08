@@ -4,6 +4,7 @@ const catchasyncerror = require('./catchasyncerror')
 const jwt = require('jsonwebtoken')
 
 const isaunthenticated = catchasyncerror(async (req, resp, next) => {
+    console.log(req);
     const { token } = req.cookies;
     if (!token) {
         return next(new ErrorHandler("please login to access it", 401));
