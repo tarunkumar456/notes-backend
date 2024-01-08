@@ -13,6 +13,7 @@ exports.registerUser = catchasyncerror(async (req, resp) => {
 })
 //login user
 exports.loginUser = catchasyncerror(async (req, resp, next) => {
+    resp.header('Access-Control-Expose-Headers', "Set-Cookie");
     const { email, password } = req.body;
     //check if both present
     if (!email || !password) {
@@ -35,6 +36,7 @@ exports.loginUser = catchasyncerror(async (req, resp, next) => {
 
 //logout user
 exports.logout = catchasyncerror((req, resp, next) => {
+    resp.header('Access-Control-Expose-Headers', "Set-Cookie");
 
     resp.cookie("token", null, {
         expires: new Date(Date.now()),
@@ -48,6 +50,7 @@ exports.logout = catchasyncerror((req, resp, next) => {
 
 //get all notes
 exports.getNotes = catchasyncerror(async (req, resp, next) => {
+    resp.header('Access-Control-Expose-Headers', "Set-Cookie");
     let user = await userModels.find({ _id: req.user._id });
     if (!user) return next(new ErrorHandler("User not found", 404))
     let notes = user[0]
@@ -61,6 +64,7 @@ exports.getNotes = catchasyncerror(async (req, resp, next) => {
 
 //add notes
 exports.addNotes = catchasyncerror(async (req, resp, next) => {
+    resp.header('Access-Control-Expose-Headers', "Set-Cookie");
     const newnote = {
         title: req.body.title,
         discription: req.body.discription
@@ -77,6 +81,7 @@ exports.addNotes = catchasyncerror(async (req, resp, next) => {
 
 //delete notes
 exports.deleteNotes = catchasyncerror(async (req, resp, next) => {
+    resp.header('Access-Control-Expose-Headers', "Set-Cookie");
     // console.log(req.body)
     const user = await userModels.find({ _id: req.user._id });
     if (!user) return next(new ErrorHandler("User not found", 404))
@@ -92,6 +97,7 @@ exports.deleteNotes = catchasyncerror(async (req, resp, next) => {
 
 //edit notes
 exports.editNotes = catchasyncerror(async (req, resp, next) => {
+    resp.header('Access-Control-Expose-Headers', "Set-Cookie");
     // console.log(req.body)
     const user = await userModels.find({ _id: req.user._id });
     if (!user) return next(new ErrorHandler("User not found", 404))
@@ -112,6 +118,7 @@ exports.editNotes = catchasyncerror(async (req, resp, next) => {
 
 //get note
 exports.getNote = catchasyncerror(async (req, resp, next) => {
+    resp.header('Access-Control-Expose-Headers', "Set-Cookie");
     // console.log(req.body)
     const user = await userModels.find({ _id: req.user._id });
     if (!user) return next(new ErrorHandler("User not found", 404))
@@ -130,6 +137,7 @@ exports.getNote = catchasyncerror(async (req, resp, next) => {
 
 //authenticated
 exports.isAuth = catchasyncerror(async (req, resp, next) => {
+    resp.header('Access-Control-Expose-Headers', "Set-Cookie");
     const { token } = req.cookies;
     console.log(req);
     if (!token) {
