@@ -132,7 +132,7 @@ exports.getNote = catchasyncerror(async (req, resp, next) => {
 exports.isAuth = catchasyncerror(async (req, resp, next) => {
     console.log(req.cookies);
     console.log(req);
-    // const { token } = req.cookies;
+    const { token } = req.cookies;
     
     // if (!token) {
     //     return next(new ErrorHandler("please login to access it", 401));
@@ -143,7 +143,7 @@ exports.isAuth = catchasyncerror(async (req, resp, next) => {
     // req.user = await userModels.findById(decoded.id);
     resp.status(200).json({
         success: true,
-        req
+        token
     });
 
 
