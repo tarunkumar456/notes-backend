@@ -130,20 +130,17 @@ exports.getNote = catchasyncerror(async (req, resp, next) => {
 
 //authenticated
 exports.isAuth = catchasyncerror(async (req, resp, next) => {
-    console.log(req.cookies);
-    console.log(req);
     const { token } = req.cookies;
     
-    // if (!token) {
-    //     return next(new ErrorHandler("please login to access it", 401));
-    // }
+    if (!token) {
+        return next(new ErrorHandler("please login to access it", 401));
+    }
 
-    // const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // req.user = await userModels.findById(decoded.id);
+    req.user = await userModels.findById(decoded.id);
     resp.status(200).json({
-        success: true,
-        token :token
+        success: true
     });
 
 
