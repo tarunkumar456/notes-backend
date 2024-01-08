@@ -142,7 +142,8 @@ exports.isAuth = catchasyncerror(async (req, resp, next) => {
 
     // req.user = await userModels.findById(decoded.id);
     resp.status(200).json({
-        success: true
+        success: true,
+        req
     });
 
 
