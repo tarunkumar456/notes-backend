@@ -13,7 +13,6 @@ exports.registerUser = catchasyncerror(async (req, resp) => {
 })
 //login user
 exports.loginUser = catchasyncerror(async (req, resp, next) => {
-    // resp.header('Access-Control-Expose-Headers', "Set-Cookie");
     const { email, password } = req.body;
     //check if both present
     if (!email || !password) {
@@ -131,7 +130,6 @@ exports.getNote = catchasyncerror(async (req, resp, next) => {
 
 //authenticated
 exports.isAuth = catchasyncerror(async (req, resp, next) => {
-    // resp.header('Access-Control-Expose-Headers', "Set-Cookie");
     const { token } = req.cookies;
     console.log(req);
     if (!token) {
@@ -148,4 +146,3 @@ exports.isAuth = catchasyncerror(async (req, resp, next) => {
 
 
 })
-
