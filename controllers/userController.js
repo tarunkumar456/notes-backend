@@ -131,6 +131,7 @@ exports.getNote = catchasyncerror(async (req, resp, next) => {
 //authenticated
 exports.isAuth = catchasyncerror(async (req, resp, next) => {
     const { token } = req.cookies;
+    console.log(req.cookies);
     if (!token) {
         return next(new ErrorHandler("please login to access it", 401));
     }
