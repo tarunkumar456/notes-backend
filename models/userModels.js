@@ -51,7 +51,8 @@ userSchema.pre("save", async function (next) {
 //jwt token
 userSchema.methods.getJWTtoken = function () {
     return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
-        expiresIn: process.env.JWT_EXPIRE
+        expiresIn: process.env.JWT_EXPIRE,
+        secure: true
     })
 }
 //check password
