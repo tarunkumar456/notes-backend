@@ -13,6 +13,7 @@ exports.registerUser = catchasyncerror(async (req, resp) => {
 })
 //login user
 exports.loginUser = catchasyncerror(async (req, resp, next) => {
+     resp.setHeader('Access-Control-Allow-Credentials', true);
     const { email, password } = req.body;
     //check if both present
     if (!email || !password) {
