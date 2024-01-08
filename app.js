@@ -1,6 +1,15 @@
 const express = require('express')
 const cookieparser = require('cookie-parser');
+const cors = require('cors');
 const app = express();
+app.use(
+  cors({
+    "credentials":true,
+    "origin":"*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "optionsSuccessStatus": 204
+  })
+);
 // const fileUpload = require("express-fileupload");
 app.use(cookieparser());
 
